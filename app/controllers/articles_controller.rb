@@ -1,17 +1,17 @@
 class ArticlesController < ApplicationController
+    # before_action :find_article, only: [:show,:edit,:update,:destroy]
+    before_action :find_article, except: [:new,:create]
+
 
 
 def show
-    @article = Article.find(params[:id])
 end
 
 def edit
-    @article = Article.find(params[:id])
     
 end
 
 def update
-    @article = Article.find(params[:id])
     @article.update(title: params[:article][:title],content: params[:article][:content])
 
     redirect_to @article
@@ -29,9 +29,13 @@ def create
 end
 
 def destroy
-    @article = Article.find(params[:id])
     @article.destroy
     redirect_to root_path
+end
+
+def find_article
+    @article = Article.find(params[:id])
+
 end
 
 
