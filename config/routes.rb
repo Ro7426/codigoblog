@@ -7,6 +7,8 @@ get "/bienvenida", to: "home#index"
 
 root to: "home#index"
 
+get "articles/user/:user_id", to: "articles#author"
+
 # render de colecciones
 get "articles", to: "articles#index"
 
