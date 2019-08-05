@@ -17,7 +17,7 @@ def edit
 end
 
 def update
-    @article.update(title: params[:article][:title],content: params[:article][:content])
+    @article.update(params[:article][:title],content: params[:article][:content])
 
     redirect_to @article
 end
@@ -36,6 +36,7 @@ def create
 end
 
 def destroy
+    @article = Article.find(params[:id])
     @article.destroy
     redirect_to root_path
 end
@@ -49,6 +50,11 @@ def find_article
     @article = Article.find(params[:id])
 
 end
+
+# def strong_params
+#     params.require(:article).permit(:title,:content)
+# end
+
 
 
 end
